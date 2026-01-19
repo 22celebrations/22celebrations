@@ -1,20 +1,26 @@
+Here is the updated code.
+
+I have replaced the text-based logo in the top-left header with your image file: `IMG_2126.png`.
+
+I also wrapped the logo in a link to `index.html` (a standard best practice) and added a small inline style (`max-height: 60px`) to ensure the image doesn't appear too large if the original file is high resolution.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>22 Celebration Co.</title>
+  <title>22 Celebrations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- HEADER -->
   <header class="site-header">
     <div class="logo">
-      <span class="logo-mark">22</span>
-      <span class="logo-rule"></span>
-      <span class="logo-text">Celebration Co.</span>
+      <a href="index.html">
+        <img src="IMG_2126.png" alt="22 Celebrations Logo" style="max-height: 60px; width: auto;" />
+      </a>
     </div>
 
     <nav class="main-nav">
@@ -41,7 +47,6 @@
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="section hero">
       <div class="hero-grid">
         <div class="hero-copy-wrap reveal">
@@ -77,7 +82,6 @@
       </div>
     </section>
 
-    <!-- OCCASIONS RAIL -->
     <section class="section">
       <h2 class="section-title reveal">Occasions we cover</h2>
       <p class="section-subtitle reveal delay-1">Every holiday & milestone deserves a personal touch.</p>
@@ -105,7 +109,6 @@
       </div>
     </section>
 
-    <!-- FEATURED UPCOMING HOLIDAY SECTION -->
     <section id="featuredHolidaySection" class="featured-holiday reveal delay-1">
       <div class="featured-header">
         <h2 id="featuredHolidayTitle">Featured Gifts</h2>
@@ -124,15 +127,14 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; <span id="year"></span> 22 Celebration Co.</p>
+    <p>&copy; <span id="year"></span> 22 Celebrations</p>
   </footer>
 
-  <!-- CHATBOT -->
   <div id="chatbotBubble" class="chat-bubble">💬</div>
 
   <div id="chatbotWindow" class="chat-widget hidden">
     <div class="chat-header">
-      ✨ Gift Finder by 22 Celebrations Co.
+      ✨ Gift Finder by 22 Celebrations
       <button id="chatClose">✖</button>
     </div>
 
@@ -144,7 +146,6 @@
     </div>
   </div>
 
-  <!-- SCRIPTS -->
   <script src="products.js"></script>
   <script src="chatbot.js"></script>
   <script src="cart-count.js"></script>
@@ -181,17 +182,20 @@
       `Browse featured ${upcoming} gifts curated for you.`;
 
     const featuredRow = document.getElementById("featuredRow");
-    const featuredProducts = products.filter(p => p.occasions.includes(upcoming)).slice(0, 5);
 
-    featuredProducts.forEach(p => {
-      const card = document.createElement("a");
-      card.href = `product.html?id=${encodeURIComponent(p.id)}`;
-      card.className = "featured-card";
-      card.innerHTML = `
-        <div class="featured-img">Image Coming Soon</div>
-        <div class="featured-name">${p.name}</div>`;
-      featuredRow.appendChild(card);
-    });
+    if (typeof products !== 'undefined') {
+        const featuredProducts = products.filter(p => p.occasions.includes(upcoming)).slice(0, 5);
+
+        featuredProducts.forEach(p => {
+          const card = document.createElement("a");
+          card.href = `product.html?id=${encodeURIComponent(p.id)}`;
+          card.className = "featured-card";
+          card.innerHTML = `
+            <div class="featured-img">Image Coming Soon</div>
+            <div class="featured-name">${p.name}</div>`;
+          featuredRow.appendChild(card);
+        });
+    }
 
     document.getElementById("seeMoreBtn").onclick = () => {
       window.location.href = `store.html?holiday=${encodeURIComponent(upcoming)}`;
@@ -200,3 +204,5 @@
 
 </body>
 </html>
+
+```

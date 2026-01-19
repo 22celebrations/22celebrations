@@ -6,14 +6,41 @@
   <title>22 Celebrations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
+
+  <style>
+    /* Container to align Image and Text side-by-side */
+    .logo-link {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      gap: 15px; /* Adjusts space between image and text */
+    }
+
+    /* Logo Image: Twice as big (120px) and kept clear */
+    .logo-img {
+      max-height: 120px; 
+      width: auto;
+      object-fit: contain;
+    }
+
+    /* Text: Gold, Bold, Uppercase */
+    .logo-text {
+      font-size: 1.8rem; /* Adjust text size as needed */
+      font-weight: 700; 
+      text-transform: uppercase;
+      color: #D4AF37; /* Metallic Gold Hex Code */
+      font-family: inherit; /* Uses site's default font */
+    }
+  </style>
 </head>
 
 <body>
 
   <header class="site-header">
     <div class="logo">
-      <a href="index.html">
-        <img src="IMG_2126.png" alt="22 Celebrations Logo" style="max-height: 60px; width: auto;" />
+      <a href="index.html" class="logo-link">
+        <img src="IMG_2126.png" alt="22 Celebrations Logo" class="logo-img" />
+        <span class="logo-text">22 CELEBRATIONS</span>
       </a>
     </div>
 

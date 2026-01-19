@@ -12,24 +12,25 @@
     .logo-link {
       display: flex;
       align-items: center;
-      text-decoration: none;
-      gap: 15px; /* Adjusts space between image and text */
+      text-decoration: none; /* Removes underline */
+      gap: 20px; /* Increased space for the larger logo */
     }
 
-    /* Logo Image: Twice as big (120px) and kept clear */
+    /* Logo Image: 3x size (180px) */
     .logo-img {
-      max-height: 120px; 
+      max-height: 180px; 
       width: auto;
-      object-fit: contain;
+      object-fit: contain; /* Ensures high definition look without stretching */
     }
 
-    /* Text: Gold, Bold, Uppercase */
+    /* Text: Gold, Bold, Uppercase, Larger Font */
     .logo-text {
-      font-size: 1.8rem; /* Adjust text size as needed */
+      font-size: 2.2rem; 
       font-weight: 700; 
       text-transform: uppercase;
       color: #D4AF37; /* Metallic Gold Hex Code */
-      font-family: inherit; /* Uses site's default font */
+      font-family: inherit; 
+      line-height: 1;
     }
   </style>
 </head>

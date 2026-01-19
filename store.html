@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Shop – 22 Celebration Co.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="logo">
+    <span class="logo-mark">22</span>
+    <span class="logo-rule"></span>
+    <span class="logo-text">Celebration Co.</span>
+  </div>
+
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="store.html" class="active">Shop</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="header-actions">
+    <a href="tel:17708201456" class="btn-phone">(770) 820-1456</a>
+    <a class="cart-link" href="cart.html" aria-label="Cart">
+      <span class="cart-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 6h15l-1.5 9h-11z"></path>
+          <circle cx="9" cy="20" r="1.5"></circle>
+          <circle cx="18" cy="20" r="1.5"></circle>
+          <path d="M6 6l-1-3H2"></path>
+        </svg>
+      </span>
+      <span class="cart-count" data-cart-count>0</span>
+    </a>
+  </div>
+</header>
+
+<main class="section">
+  <h1 class="section-title">Shop All Gifts</h1>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <div class="filter-group">
+      <label>Keyword</label>
+      <input id="keywordInput" type="text" placeholder="Search..." />
+    </div>
+
+    <div class="filter-group">
+      <label>Holiday</label>
+      <select id="holidaySelect">
+        <option value="">All Holidays</option>
+        <option>Christmas</option>
+        <option>New Year</option>
+        <option>Valentine's Day</option>
+        <option>St. Patrick's Day</option>
+        <option>Easter</option>
+        <option>Mother's Day</option>
+        <option>Father's Day</option>
+        <option>Graduation</option>
+        <option>Fourth of July</option>
+        <option>Halloween</option>
+        <option>Thanksgiving</option>
+        <option>Hanukkah</option>
+        <option>Kwanzaa</option>
+        <option>Birthday - Him</option>
+        <option>Birthday - Her</option>
+        <option>Birthday - Kids</option>
+        <option>Baby Shower</option>
+        <option>Wedding</option>
+        <option>Anniversary</option>
+        <option>Retirement</option>
+      </select>
+    </div>
+
+    <div class="filter-group">
+      <button id="searchBtn">Search</button>
+    </div>
+  </div>
+
+  <!-- PRODUCT GRID -->
+  <div id="productGrid" class="product-grid"></div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> 22 Celebration Co.</p>
+</footer>
+
+<script src="products.js"></script>
+<script src="cart-count.js"></script>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const grid = document.getElementById("productGrid");
+  const holidaySelect = document.getElementById("holidaySelect");
+  const keywordInput = document.getElementById("keywordInput");
+
+  function renderProducts(list) {
+    grid.innerHTML = "";
+
+    if (list.length === 0) {
+      grid.innerHTML = `<div class="no-results">No matching products found.</div>`;
+      return;
+    }
+
+    list.forEach(p => {
+      const card = document.createElement("a");
+      card.href = `product.html?id=${encodeURIComponent(p.id)}`;
+      card.className = "product-card";
+
+      card.innerHTML = `
+        <div class="product-img">Image Coming Soon</div>
+        <h3>${p.name}</h3>
+        <p class="product-desc">${p.description}</p>
+        <div class="product-price">$${p.price.toFixed(2)}</div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  function applyFilters() {
+    const kw = keywordInput.value.toLowerCase().trim();
+    const h = holidaySelect.value;
+
+    const results = products.filter(p => {
+      const matchKw =
+        kw === "" ||
+        p.name.toLowerCase().includes(kw) ||
+        p.description.toLowerCase().includes(kw);
+
+      const matchHoliday =
+        h === "" || p.occasions.includes(h);
+
+      return matchKw && matchHoliday;
+    });
+
+    renderProducts(results);
+  }
+
+  document.getElementById("searchBtn").addEventListener("click", applyFilters);
+
+  /* -----------------------------------------------------
+     AUTO-FILTER: store.html?holiday=Hanukkah
+  ----------------------------------------------------- */
+  const params = new URLSearchParams(window.location.search);
+  const holidayParam = params.get("holiday");
+
+  if (holidayParam) {
+    holidaySelect.value = holidayParam;
+  }
+
+  applyFilters();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>22 Celebration Co.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="logo">
+      <span class="logo-mark">22</span>
+      <span class="logo-rule"></span>
+      <span class="logo-text">Celebration Co.</span>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="store.html">Shop</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="header-actions">
+      <a href="tel:17708201456" class="btn-phone">(770) 820-1456</a>
+      <a class="cart-link" href="cart.html" aria-label="Cart">
+        <span class="cart-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 6h15l-1.5 9h-11z"></path>
+            <circle cx="9" cy="20" r="1.5"></circle>
+            <circle cx="18" cy="20" r="1.5"></circle>
+            <path d="M6 6l-1-3H2"></path>
+          </svg>
+        </span>
+        <span class="cart-count" data-cart-count>0</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="section hero">
+      <div class="hero-grid">
+        <div class="hero-copy-wrap reveal">
+          <div class="hero-kicker">Boutique gifting studio</div>
+          <h1 class="hero-title">Elegant gifts for all 22 celebrations and beyond</h1>
+          <p class="hero-copy">
+            Curated boxes and custom baskets built around the person, the moment,
+            and the story you want to tell.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="store.html">Shop gifts</a>
+            <a class="btn-secondary" href="contact.html">Build a custom basket</a>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal delay-1">
+          <div class="hero-image">Signature gift styling</div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <h3>22</h3>
+              <p>Holiday themes</p>
+            </div>
+            <div class="hero-stat">
+              <h3>120+</h3>
+              <p>Gift concepts</p>
+            </div>
+            <div class="hero-stat">
+              <h3>Handmade</h3>
+              <p>Curated details</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OCCASIONS RAIL -->
+    <section class="section">
+      <h2 class="section-title reveal">Occasions we cover</h2>
+      <p class="section-subtitle reveal delay-1">Every holiday & milestone deserves a personal touch.</p>
+
+      <div class="occasion-rail reveal delay-2">
+        <div class="occasion-chip">🎄 Christmas</div>
+        <div class="occasion-chip">🎉 New Year</div>
+        <div class="occasion-chip">❤️ Valentine’s Day</div>
+        <div class="occasion-chip">🍀 St. Patrick’s Day</div>
+        <div class="occasion-chip">🐣 Easter</div>
+        <div class="occasion-chip">👩‍👧 Mother’s Day</div>
+        <div class="occasion-chip">👨 Father’s Day</div>
+        <div class="occasion-chip">🎓 Graduation</div>
+        <div class="occasion-chip">🇺🇸 4th of July</div>
+        <div class="occasion-chip">📚 Back to School</div>
+        <div class="occasion-chip">🎃 Halloween</div>
+        <div class="occasion-chip">🦃 Thanksgiving</div>
+        <div class="occasion-chip">🕎 Hanukkah</div>
+        <div class="occasion-chip">🟥🟩 Kwanzaa</div>
+        <div class="occasion-chip">🎂 Birthdays</div>
+        <div class="occasion-chip">👶 Baby Shower</div>
+        <div class="occasion-chip">💍 Wedding</div>
+        <div class="occasion-chip">💞 Anniversary</div>
+        <div class="occasion-chip">🎉 Retirement</div>
+      </div>
+    </section>
+
+    <!-- FEATURED UPCOMING HOLIDAY SECTION -->
+    <section id="featuredHolidaySection" class="featured-holiday reveal delay-1">
+      <div class="featured-header">
+        <h2 id="featuredHolidayTitle">Featured Gifts</h2>
+        <p id="featuredHolidaySubtitle">Upcoming holiday picks just for you.</p>
+      </div>
+
+      <div class="featured-scroller-wrapper">
+        <div id="featuredRow" class="featured-row"></div>
+      </div>
+
+      <div class="featured-footer">
+        <button id="seeMoreBtn" class="btn-see-more">See More</button>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> 22 Celebration Co.</p>
+  </footer>
+
+  <!-- CHATBOT -->
+  <div id="chatbotBubble" class="chat-bubble">💬</div>
+
+  <div id="chatbotWindow" class="chat-widget hidden">
+    <div class="chat-header">
+      ✨ Gift Finder by 22 Celebrations Co.
+      <button id="chatClose">✖</button>
+    </div>
+
+    <div id="chatMessages" class="chat-messages"></div>
+
+    <div class="chat-input-row">
+      <input id="chatInput" type="text" placeholder="Try: Birthday gift for mom under $80" />
+      <button id="chatSend">Send</button>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="products.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="cart-count.js"></script>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const holidayMap = [
+      "New Year","Valentine's Day","St. Patrick's Day","Easter","Mother's Day",
+      "Father's Day","Graduation","Fourth of July","Halloween","Thanksgiving",
+      "Hanukkah","Kwanzaa","Christmas"
+    ];
+
+    function getUpcomingHoliday() {
+      const m = new Date().getMonth() + 1;
+      if (m === 12) return "Christmas";
+      if (m === 11) return "Thanksgiving";
+      if (m === 10) return "Halloween";
+      if (m === 7) return "Fourth of July";
+      if (m === 6) return "Father's Day";
+      if (m === 5) return "Mother's Day";
+      if (m === 4) return "Easter";
+      if (m === 3) return "St. Patrick's Day";
+      if (m === 2) return "Valentine's Day";
+      if (m === 1) return "New Year";
+      return "Christmas";
+    }
+
+    const upcoming = getUpcomingHoliday();
+
+    const greeting = (upcoming === "Christmas") ? "Merry Christmas" : `Happy ${upcoming}`;
+    document.getElementById("featuredHolidayTitle").innerText = greeting;
+    document.getElementById("featuredHolidaySubtitle").innerText =
+      `Browse featured ${upcoming} gifts curated for you.`;
+
+    const featuredRow = document.getElementById("featuredRow");
+    const featuredProducts = products.filter(p => p.occasions.includes(upcoming)).slice(0, 5);
+
+    featuredProducts.forEach(p => {
+      const card = document.createElement("a");
+      card.href = `product.html?id=${encodeURIComponent(p.id)}`;
+      card.className = "featured-card";
+      card.innerHTML = `
+        <div class="featured-img">Image Coming Soon</div>
+        <div class="featured-name">${p.name}</div>`;
+      featuredRow.appendChild(card);
+    });
+
+    document.getElementById("seeMoreBtn").onclick = () => {
+      window.location.href = `store.html?holiday=${encodeURIComponent(upcoming)}`;
+    };
+  </script>
+
+</body>
+</html>

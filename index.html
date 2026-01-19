@@ -1,11 +1,6 @@
-This is a great update. To make the logo bigger, clearer, and add the text next to it while keeping it aligned, we need to do two things:
+Understood. I have reverted the number back to **22** while keeping your logo image (`IMG_2126.png`) and the "Celebrations" name format.
 
-1. **Update the HTML** structure in the header to include the text.
-2. **Add some CSS styles** to handle the size, alignment (flexbox), and ensure the text matches the site's general theme (inheriting color, bold, uppercase).
-
-Since I don't have access to your `style.css` file, I have added a `<style>` block in the `<head>` of the HTML. This ensures the changes look right immediately.
-
-Here is the updated code:
+Here is the corrected code:
 
 ```html
 <!DOCTYPE html>
@@ -15,44 +10,14 @@ Here is the updated code:
   <title>22 Celebrations</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
-  
-  <style>
-    /* Align image and text horizontally */
-    .logo-link {
-      display: flex;
-      align-items: center;
-      text-decoration: none; /* Removes link underline */
-      color: inherit; /* Ensures text uses the site's default header color */
-    }
-
-    /* Logo Image Styling */
-    .logo-img {
-      /* Previously 60px, now twice as big at 120px */
-      max-height: 120px; 
-      width: auto;
-      margin-right: 1rem; /* Space between image and text */
-      /* Tries to render edges crisper if scaling up */
-      image-rendering: -webkit-optimize-contrast; 
-    }
-
-    /* Logo Text Styling */
-    .new-logo-text {
-      font-size: 1.5rem; /* Adjust size as needed */
-      font-weight: 700;  /* Bold */
-      text-transform: uppercase; /* Ensure it says "CELEBRATIONS" */
-      letter-spacing: 0.05em;
-      line-height: 1.2;
-    }
-  </style>
 </head>
 
 <body>
 
   <header class="site-header">
     <div class="logo">
-      <a href="index.html" class="logo-link">
-        <img src="IMG_2126.png" alt="22 Celebrations Logo" class="logo-img" />
-        <span class="new-logo-text">22 Celebrations</span>
+      <a href="index.html">
+        <img src="IMG_2126.png" alt="22 Celebrations Logo" style="max-height: 60px; width: auto;" />
       </a>
     </div>
 
